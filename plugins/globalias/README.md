@@ -77,3 +77,25 @@ $ la<space>
 # expands to:
 $ ls --color=auto -lah
 ```
+
+recommended:
+
+```shell
+# defind ignored aliases
+ialist+="
+do cp rm mv grep hgrep z '*'
+tmux kate
+"
+
+# let all `ls` aliases ignored in current zsh
+for a in $(zsh -i -c 'compgen -a' | grep ^l); do
+    case $(zsh -i -c "alias $a" | cut -d\' -f2) in ls*) ialist+="$a " ;; esac
+done
+
+# save to ~/.zshrc
+ialist=$(echo $ialist | fold -s)
+echo "
+GLOBALIAS_FILTER_VALUES=(
+$ialist
+)" >>~/.zshrc
+```
