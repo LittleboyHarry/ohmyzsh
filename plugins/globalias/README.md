@@ -89,7 +89,7 @@ tmux kate
 
 # let all `ls` aliases ignored in current zsh
 for a in $(zsh -i -c 'compgen -a' | grep ^l); do
-    case $(zsh -i -c "alias $a" | cut -d\' -f2) in ls*) ialist+="$a " ;; esac
+  case $(zsh -i -c "alias $a" | cut -d\' -f2) in ls*) ialist+="$a " ;; esac
 done
 
 # save to ~/.zshrc
